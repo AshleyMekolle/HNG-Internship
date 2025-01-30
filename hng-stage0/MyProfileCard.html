@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashley's Profile Card</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f3f4f6;
+            padding: 20px;
+        }
+
+        .profile-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 340px;
+            padding: 28px;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: block;
+            object-fit: cover;
+            border: 3px solid #e5e7eb;
+        }
+
+        .profile-name {
+            text-align: center;
+            font-size: 24px;
+            color: #111827;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .profile-title {
+            text-align: center;
+            color: #4b5563;
+            font-size: 15px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .profile-bio {
+            color: #4b5563;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #4b5563;
+            font-size: 13px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            color: #4b5563;
+            text-decoration: none;
+            font-size: 13px;
+            padding: 6px 12px;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .social-link:hover {
+            background-color: #f3f4f6;
+            color: #111827;
+        }
+
+        .utc-time {
+            text-align: center;
+            color: #6b7280;
+            font-size: 13px;
+            margin-top: 8px;
+            font-weight: 400;
+            padding-top: 16px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        @media (max-width: 480px) {
+            .profile-card {
+                padding: 24px;
+            }
+
+            .profile-image {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-card">
+        <img 
+            src="Ashley.jpg" 
+            alt="Profile Picture" 
+            class="profile-image"
+            data-testid="profilePicture"
+        >
+        
+        <h1 class="profile-name" data-testid="fullName">Mekolle Ashley</h1>
+        
+        <h2 class="profile-title" data-testid="jobTitle">Frontend Developer</h2>
+        
+        <p class="profile-bio" data-testid="shortBio">
+            Dedicated frontend developer focused on creating efficient and user-friendly web experiences. 
+            Committed to continuous learning and innovation in web development.
+        </p>
+        
+        <div class="profile-info">
+            <div class="info-item" data-testid="currentLocation">
+                📍 Buea, Cameroon 
+            </div>
+            
+            <div class="info-item" data-testid="emailAddress">
+                📧 Mekolleashleyam@gmail.com
+            </div>
+        </div>
+        
+        <div class="social-links" data-testid="socialLinks">
+            <a href="https://www.linkedin.com/in/ashley-mekolle-66136b256/" target="_blank" class="social-link">LinkedIn</a>
+            <a href="https://github.com/AshleyMekolle" target="_blank" class="social-link">GitHub</a>
+        </div>
+        
+        <div class="utc-time" data-testid="currentTimeUTC">
+            Loading UTC time...
+        </div>
+    </div>
+
+    <script>
+        function updateUTCTime() {
+            const timeElement = document.querySelector('[data-testid="currentTimeUTC"]');
+            const now = new Date();
+            timeElement.textContent = `🕒 ${now.toUTCString()}`;
+        }
+
+        updateUTCTime();
+        setInterval(updateUTCTime, 1000);
+    </script>
+</body>
+</html>
