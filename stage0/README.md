@@ -44,7 +44,7 @@ This project is deployed on **Netlify**. If you want to deploy your own version:
 3. Deploy and share your live link!
 
 ## Screenshot
-![image](https://github.com/user-attachments/assets/b8023c3b-4cf8-49fe-a27d-7ad8c89f6f35)
+![alt text](<stage0/Profile card.JPG>)
 
 
 
