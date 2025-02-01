@@ -1,6 +1,6 @@
 # HNG Internship Tasks 🚀
 
-This repository contains my solutions and submissions for the HNG Internship X program. Each branch/directory represents different stages of the internship, showcasing my progress and growth as a frontend developer.
+This repository contains my solutions and submissions for the HNG Internship program. Each branch/directory represents different stages of the internship, showcasing my progress and growth as a frontend developer.
 
 ## 📋 Overview
 
