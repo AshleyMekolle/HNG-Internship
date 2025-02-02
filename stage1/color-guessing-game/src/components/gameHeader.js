@@ -12,10 +12,6 @@ export default function GameHeader({ score, highScore, streak }) {
           </div>
         </div>
         <div className="stat-item">
-          <div className="stat-label">High Score</div>
-          <div className="stat-value">{highScore}</div>
-        </div>
-        <div className="stat-item">
           <div className="stat-label">Streak</div>
           <div className="stat-value">{streak}</div>
         </div>
