@@ -16,7 +16,7 @@ export default function GameHeader({ score, streak }) {
           <div className="stat-value">{streak}</div>
         </div>
       </div>
-      {streak >= 3 && <div className="streak-indicator">🔥 Hot Streak! Bonus Points Active!</div>}
+      {streak >= 3 && <div className="streak-indicator"> {streak}x 🔥 Hot Streak!</div>}
     </div>
   )
 }
