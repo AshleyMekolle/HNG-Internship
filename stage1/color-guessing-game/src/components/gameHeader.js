@@ -1,6 +1,6 @@
 import "../styles/gameHeader.css"
 
-export default function GameHeader({ score, highScore, streak }) {
+export default function GameHeader({ score, streak }) {
   return (
     <div className="game-header">
       <h1>Color Guessing Game</h1>
