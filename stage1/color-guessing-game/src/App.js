@@ -88,7 +88,7 @@ export default function ColorGuessingGame() {
 
   useEffect(() => {
     startNewGame()
-  }, [])
+  }, )
 
   return (
     <div className="game-container">
