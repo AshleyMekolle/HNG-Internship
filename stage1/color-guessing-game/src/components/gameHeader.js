@@ -1,4 +1,4 @@
-import "./GameHeader.css"
+import "../styles/gameHeader.css"
 
 export default function GameHeader({ score, highScore, streak }) {
   return (

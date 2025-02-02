@@ -1,4 +1,4 @@
-import "./ColorOptions.css"
+import "../styles/colorOptions.css"
 
 export default function ColorOptions({ options, onGuess, isGuessing }) {
   return (

@@ -1,4 +1,4 @@
-import "./NewGameButton.css"
+import "../styles/newGameButton.css"
 
 export default function NewGameButton({ onClick }) {
   return (

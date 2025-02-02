@@ -1,4 +1,4 @@
-import "./ColorBox.css"
+import "../styles/colorBox.css"
 
 export default function ColorBox({ color }) {
   return (

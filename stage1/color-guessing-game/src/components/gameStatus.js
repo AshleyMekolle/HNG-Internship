@@ -1,4 +1,4 @@
-import "./GameStatus.css"
+import "../styles/gameStatus.css"
 
 export default function GameStatus({ status }) {
   return (

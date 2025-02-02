@@ -4,7 +4,7 @@ import ColorOptions from "./components/colorOptions"
 import GameHeader from "./components/gameHeader"
 import GameStatus from "./components/gameStatus"
 import NewGameButton from "./components/newGameButton"
-import "./ColorGuessingGame.css"
+import "./App.css"
 
 const COLORS = [
   "#FF6B6B",
