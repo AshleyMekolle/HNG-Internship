@@ -15,16 +15,26 @@ This repository contains my solutions and submissions for the HNG Internship pro
 ```
 ├── Stage-Zero
 │   ├── task-requirements.md
-│   ├── solution
+│   ├── index.html
+│   └── assets
+├── Stage-One
+│   ├── task-requirements.md
+│   ├── color-guessing-game
 │   └── assets
 └── [Additional stages as the program progresses]
 ```
 
 ## 💻 Technologies Used
 
-- HTML5
-- CSS3
+Stage Zero
+- HTML
+- CSS
 - Vanilla JavaScript
+- Git
+Stage One
+- HTML
+- CSS
+- React js
 - Git
 
 ## 🚀 Projects & Tasks
@@ -33,6 +43,11 @@ This repository contains my solutions and submissions for the HNG Internship pro
 - Task Description: A responsive profile card with a short bio, location and social links.
 - Solution: Built a reponsive profile card which met the requirements
 - Live Demo: https://stalwart-cajeta-4db247.netlify.app/
+  
+### Stage One
+- Task Description: An interactive color guessing game where players must identify the correct color from multiple options.
+- Solution: Built a reponsive color guessing app which met the requirements
+- Live Demo: https://color-guessing-game-hng.netlify.app/
 
 [Additional stages will be added as the internship progresses]
 
@@ -55,7 +70,8 @@ cd Stage0
 
 ## 🌐 Live Demos
 
-- Stage Zero: https://stalwart-cajeta-4db247.netlify.app/ Project: 
+- Stage Zero: https://stalwart-cajeta-4db247.netlify.app/ Project:
+- Stage One: https://color-guessing-game-hng.netlify.app/
 
 ## 📝 Documentation
 
