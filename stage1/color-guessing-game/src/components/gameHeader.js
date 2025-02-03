@@ -4,6 +4,7 @@ export default function GameHeader({ score, highScore, streak }) {
   return (
     <div className="game-header">
       <h1>Color Guessing Game</h1>
+      <h3>Guess the correct color displayed in the box below!</h3>
       <div className="stats">
         <div className="stat-item">
           <div className="stat-label">Score</div>
