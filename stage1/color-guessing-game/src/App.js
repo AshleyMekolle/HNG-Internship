@@ -54,6 +54,9 @@ export default function ColorGuessingGame() {
     if (streak > 2) bonus *= 1.2
     return Math.floor(bonus)
   }
+  const handleNewGame = () => {
+    startNewGame(true)
+  }
 
   const handleWrongGuess = () => {
     setStreak(0)
@@ -77,13 +80,17 @@ export default function ColorGuessingGame() {
     }
   }
 
-  const startNewGame = () => {
+  const startNewGame = (isManualReset = false) => {
+    if (isManualReset) {
+      setStreak(0)
+    }
     setIsGuessing(false)
     const newTargetColor = generateRandomColor()
     setTargetColor(newTargetColor)
     setColorOptions(generateColorOptions(newTargetColor))
     setGameStatus("")
     setBonusActive(Math.random() > 0.7)
+    
   }
 
   useEffect(() => {
@@ -98,7 +105,7 @@ export default function ColorGuessingGame() {
         <ColorBox color={targetColor} />
         <ColorOptions options={colorOptions} onGuess={handleGuess} isGuessing={isGuessing} />
         <GameStatus status={gameStatus} />
-        <NewGameButton onClick={startNewGame} />
+        <NewGameButton onClick={handleNewGame} />
       </div>
     </div>
   )
