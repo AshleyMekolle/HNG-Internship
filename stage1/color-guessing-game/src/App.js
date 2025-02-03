@@ -102,6 +102,7 @@ export default function ColorGuessingGame() {
     <div className="game-container">
       <div className="game-content">
         <GameHeader score={score} highScore={highScore} streak={streak} />
+        {bonusActive && <div className="bonus-indicator">2x Bonus Round!</div>}
         <ColorBox color={targetColor} />
         <ColorOptions options={colorOptions} onGuess={handleGuess} isGuessing={isGuessing} />
         <GameStatus status={gameStatus} />

@@ -1,7 +1,7 @@
 # Color Guessing Game - Task Requirements
 
 ## Overview
-Create an interactive color guessing game where players must identify the correct color from multiple options. The game should be built using React or VAnilla Javascript and include score tracking, feedback mechanisms, and a responsive design.
+Create an interactive color guessing game where players must identify the correct color from multiple options. The game should be built using React or Vanilla Javascript and include score tracking, feedback mechanisms, and a responsive design.
 
 ## Technical Stack
 - **Frontend Framework:** React
