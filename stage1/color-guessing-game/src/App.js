@@ -33,7 +33,6 @@ export default function ColorGuessingGame() {
   const [isGuessing, setIsGuessing] = useState(false)
   const [streak, setStreak] = useState(0)
   const [highScore, setHighScore] = useState(0)
-  const [bonusActive, setBonusActive] = useState(false)
 
   const generateRandomColor = () => COLORS[Math.floor(Math.random() * COLORS.length)]
 
@@ -48,20 +47,16 @@ export default function ColorGuessingGame() {
     return options.sort(() => Math.random() - 0.5)
   }
 
-  const calculateBonus = () => {
-    let bonus = 1
-    if (bonusActive) bonus *= 2
-    if (streak > 2) bonus *= 1.2
-    return Math.floor(bonus)
-  }
   const handleNewGame = () => {
+    setScore(0)
+    setStreak(0)
     startNewGame(true)
   }
 
   const handleWrongGuess = () => {
     setStreak(0)
     setGameStatus("Wrong guess! Try again! 🔄")
-    setTimeout(startNewGame, 1000)
+    setTimeout(() => startNewGame(), 1000)
   }
 
   const handleGuess = (color) => {
@@ -69,28 +64,25 @@ export default function ColorGuessingGame() {
     setIsGuessing(true)
 
     if (color === targetColor) {
-      const bonus = calculateBonus()
-      setScore((prevScore) => prevScore + bonus)
+      const newScore = score + 1
+      setScore(newScore)
       setStreak((prev) => prev + 1)
-      setHighScore((prev) => Math.max(prev, score + bonus))
-      setGameStatus(`Correct! +${bonus} points! 🎉`)
-      setTimeout(startNewGame, 1500)
+      setHighScore((prev) => Math.max(prev, newScore))
+      setGameStatus(`Correct! +1 point! 🎉 High Score: ${Math.max(highScore, newScore)}`)
+      setTimeout(() => startNewGame(), 1500)
     } else {
       handleWrongGuess()
     }
   }
 
   const startNewGame = (isManualReset = false) => {
-    if (isManualReset) {
-      setStreak(0)
-    }
     setIsGuessing(false)
     const newTargetColor = generateRandomColor()
     setTargetColor(newTargetColor)
     setColorOptions(generateColorOptions(newTargetColor))
-    setGameStatus("")
-    setBonusActive(Math.random() > 0.7)
-    
+    if (!isManualReset) {
+      setGameStatus("")
+    }
   }
 
   useEffect(() => {
@@ -102,7 +94,6 @@ export default function ColorGuessingGame() {
     <div className="game-container">
       <div className="game-content">
         <GameHeader score={score} highScore={highScore} streak={streak} />
-        {bonusActive && <div className="bonus-indicator">2x Bonus Round!</div>}
         <ColorBox color={targetColor} />
         <ColorOptions options={colorOptions} onGuess={handleGuess} isGuessing={isGuessing} />
         <GameStatus status={gameStatus} />
