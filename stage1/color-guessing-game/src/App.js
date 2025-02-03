@@ -68,7 +68,7 @@ export default function ColorGuessingGame() {
       setScore(newScore)
       setStreak((prev) => prev + 1)
       setHighScore((prev) => Math.max(prev, newScore))
-      setGameStatus(`Correct! +1 point! 🎉 High Score: ${Math.max(highScore, newScore)}`)
+      setGameStatus(`Correct! +1 point! 🎉`)
       setTimeout(() => startNewGame(), 1500)
     } else {
       handleWrongGuess()
