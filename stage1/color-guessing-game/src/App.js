@@ -1,10 +1,4 @@
-import { useState, useEffect } from "react"
-import ColorBox from "./components/colorBox"
-import ColorOptions from "./components/colorOptions"
-import GameHeader from "./components/gameHeader"
-import GameStatus from "./components/gameStatus"
-import NewGameButton from "./components/newGameButton"
-import GameInstructions from "./components/gameInstructions"
+import { useState, useEffect, useCallback } from "react"
 import "./App.css"
 
 const COLORS = [
@@ -26,6 +20,78 @@ const COLORS = [
   "#FF6B81",
 ]
 
+const generateRandomColor = () => COLORS[Math.floor(Math.random() * COLORS.length)]
+
+const generateColorOptions = (correctColor) => {
+  const options = [correctColor]
+  while (options.length < 6) {
+    const newColor = generateRandomColor()
+    if (!options.includes(newColor)) {
+      options.push(newColor)
+    }
+  }
+  return options.sort(() => Math.random() - 0.5)
+}
+
+const ColorBox = ({ color }) => (
+  <div data-testid="colorBox" className="color-box" style={{ backgroundColor: color }}></div>
+)
+
+const ColorOptions = ({ options, onGuess, isGuessing }) => (
+  <div className="color-grid">
+    {options.map((color, index) => (
+      <button
+        key={index}
+        data-testid="colorOption"
+        className="color-button"
+        style={{ backgroundColor: color }}
+        onClick={() => onGuess(color)}
+        disabled={isGuessing}
+      />
+    ))}
+  </div>
+)
+
+const GameHeader = ({ score, highScore, streak }) => (
+  <div className="game-header">
+    <h1>Color Guessing Game</h1>
+    <div className="stats">
+      <div className="stat-item">
+        <span>Score</span>
+        <span className="stat-value" data-testid="score">
+          {score}
+        </span>
+      </div>
+      <div className="stat-item">
+        <span>High Score</span>
+        <span className="stat-value">{highScore}</span>
+      </div>
+      <div className="stat-item">
+        <span>Streak</span>
+        <span className="stat-value">{streak}</span>
+      </div>
+    </div>
+  </div>
+)
+
+const GameStatus = ({ status }) => (
+  <p data-testid="gameStatus" className="game-status">
+    {status}
+  </p>
+)
+
+const NewGameButton = ({ onClick }) => (
+  <button data-testid="newGameButton" className="new-game-button" onClick={onClick}>
+    New Game
+  </button>
+)
+
+const GameInstructions = () => (
+  <p data-testid="gameInstructions" className="game-instructions">
+    Guess the correct color!
+  </p>
+)
+
 export default function ColorGuessingGame() {
   const [targetColor, setTargetColor] = useState("")
   const [colorOptions, setColorOptions] = useState([])
@@ -35,18 +101,15 @@ export default function ColorGuessingGame() {
   const [streak, setStreak] = useState(0)
   const [highScore, setHighScore] = useState(0)
 
-  const generateRandomColor = () => COLORS[Math.floor(Math.random() * COLORS.length)]
-
-  const generateColorOptions = (correctColor) => {
-    const options = [correctColor]
-    while (options.length < 6) {
-      const newColor = generateRandomColor()
-      if (!options.includes(newColor)) {
-        options.push(newColor)
-      }
+  const startNewGame = useCallback((isManualReset = false) => {
+    setIsGuessing(false)
+    const newTargetColor = generateRandomColor()
+    setTargetColor(newTargetColor)
+    setColorOptions(generateColorOptions(newTargetColor))
+    if (!isManualReset) {
+      setGameStatus("")
     }
-    return options.sort(() => Math.random() - 0.5)
-  }
+  }, [])
 
   const handleNewGame = () => {
     setScore(0)
@@ -76,26 +139,15 @@ export default function ColorGuessingGame() {
     }
   }
 
-  const startNewGame = (isManualReset = false) => {
-    setIsGuessing(false)
-    const newTargetColor = generateRandomColor()
-    setTargetColor(newTargetColor)
-    setColorOptions(generateColorOptions(newTargetColor))
-    if (!isManualReset) {
-      setGameStatus("")
-    }
-  }
-
   useEffect(() => {
     startNewGame()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [startNewGame])
 
   return (
     <div className="game-container">
       <div className="game-content">
         <GameHeader score={score} highScore={highScore} streak={streak} />
-        <GameInstructions/>
+        <GameInstructions />
         <ColorBox color={targetColor} />
         <ColorOptions options={colorOptions} onGuess={handleGuess} isGuessing={isGuessing} />
         <GameStatus status={gameStatus} />
