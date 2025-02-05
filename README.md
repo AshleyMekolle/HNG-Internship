@@ -31,6 +31,7 @@ Stage Zero
 - CSS
 - Vanilla JavaScript
 - Git
+  
 Stage One
 - HTML
 - CSS
@@ -79,7 +80,6 @@ Each stage contains its own detailed documentation including:
 - Task requirements
 - Implementation details
 - Testing procedures
-- Additional notes
 
 ## ✨ Features
 
