@@ -4,6 +4,7 @@ import ColorOptions from "./components/colorOptions"
 import GameHeader from "./components/gameHeader"
 import GameStatus from "./components/gameStatus"
 import NewGameButton from "./components/newGameButton"
+import GameInstructions from "./components/gameInstructions"
 import "./App.css"
 
 const COLORS = [
@@ -94,6 +95,7 @@ export default function ColorGuessingGame() {
     <div className="game-container">
       <div className="game-content">
         <GameHeader score={score} highScore={highScore} streak={streak} />
+        <GameInstructions/>
         <ColorBox color={targetColor} />
         <ColorOptions options={colorOptions} onGuess={handleGuess} isGuessing={isGuessing} />
         <GameStatus status={gameStatus} />
