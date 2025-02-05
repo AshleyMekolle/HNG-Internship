@@ -88,7 +88,7 @@ const NewGameButton = ({ onClick }) => (
 
 const GameInstructions = () => (
   <p data-testid="gameInstructions" className="game-instructions">
-    Guess the correct color!
+    Guess the correct color! displayed in the box below.
   </p>
 )
 
